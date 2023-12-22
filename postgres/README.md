@@ -6,9 +6,13 @@ This folder contains the necessary files to build a Docker image for the Postgre
 
 To build the Docker image, follow these steps:
 
-1. Open a terminal.
-2. Navigate to the `postgres` folder in the repository.
-3. Run the following command:
+1. Navigate to the `postgres` folder in the repository.
+
+```bash
+cd postgres
+```
+
+2. Run the following command:
 
 ```bash
 docker build --no-cache  -t postgres-quake-data .

@@ -36,38 +36,31 @@ This Python project serves as the backend for a web application that provides an
 1. Change working directory:
 
    ```bash
-   cd earthquake-backend
+   cd backend
    ```
 
-2. Create a virtual environment (optional but recommended):
+2. Activate the virtual environment:
 
    ```bash
-   python3 -m venv venv
-
+   poetry shell
    ```
 
-3. Activate the virtual environment:
-   On Windows:
+3. Install dependencies using Poetry:
 
-   ```bash
-   venv\Scripts\activate
-   ```
-
-   On macOS/Linux:
-
-   ```bash
-   source venv/bin/activate
-   ```
-
-4. Install dependencies using Poetry:
    ```bash
    poetry install
+   ```
+
+4. Change into server module:
+
+   ```bash
+   cd backend
    ```
 
 ### Running the Application
 
 ```bash
-   poetry run python app.py
+   poetry run uvicorn main:app --reload
 ```
 
 Visit http://localhost:8000/frontend.
