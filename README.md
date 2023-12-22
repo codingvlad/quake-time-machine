@@ -2,6 +2,8 @@
 
 Quake Time Machine is a web application that provides insights into earthquake data from the last 60 years. The application offers a comprehensive set of features for visualizing earthquake information through different perspectives, including a list view, an earth map view, and a timeline.
 
+![Snapshot](screenshot.png)
+
 ## Features
 
 1. Earthquake List View: The application includes a list view that displays detailed information about earthquakes. Users can perform various actions, such as selecting earthquakes for deletion, updating existing ones, or creating new earthquakes.
