@@ -1,0 +1,34 @@
+mat-toolbar {
+  flex: 0 0 5%;
+}
+.toolbar-title {
+  font-weight: 200;
+}
+.table-container {
+  flex: 0 0 85%;
+  overflow: auto;
+}
+
+.paginator-container {
+  flex: 0 0 10%;
+  height: 100%;
+  overflow: auto;
+}
+
+table,
+.mat-mdc-row,
+.mat-mdc-cell,
+mat-paginator {
+  color: #383838ff;
+  background-color: #f2f2f2ff;
+}
+
+mat-paginator {
+  margin-top: 20px;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  color: black;
+  font-weight: 500;
+  cursor: pointer;
+}

@@ -1,0 +1,33 @@
+<mat-toolbar>
+  <span>{{ title }}</span>
+  <span class="toolbar-spacer"></span>
+  <button
+    mat-icon-button
+    (click)="userInteractions.playback()"
+    [disabled]="userInteractions.isInPlayback"
+    aria-label="Playback"
+  >
+    <mat-icon>play_circle</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    (click)="userInteractions.pausePlayback()"
+    [disabled]="!userInteractions.isInPlayback"
+    aria-label="Pause playback"
+  >
+    <mat-icon>pause_circle</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-sidenav-container [hasBackdrop]="false">
+  <mat-sidenav mode="over" [autoFocus]="false" [opened]="showEarthQuakeDetail"
+    ><app-earthquake-detail></app-earthquake-detail
+  ></mat-sidenav>
+  <mat-sidenav-content class="content-container">
+    <div class="side-list">
+      <app-earthquake-list></app-earthquake-list>
+    </div>
+    <div class="main-content-container">
+      <app-earth-view></app-earth-view> <app-timeline></app-timeline>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

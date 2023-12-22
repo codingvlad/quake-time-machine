@@ -1,0 +1,223 @@
+<mat-toolbar>
+  <span class="toolbar-title">{{ title }}</span>
+  <span class="toolbar-spacer"></span>
+  <button
+    *ngIf="mode === 'view'"
+    mat-icon-button
+    (click)="editEarthquake()"
+    aria-label="Edit earthquake"
+  >
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    (click)="userInteractions.hideEarthquakeDetail()"
+    aria-label="Close earthquake detail"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<form [formGroup]="earthquakeForm" class="full-width">
+  <table class="full-width" cellspacing="0">
+    <tr>
+      <td class="full-width">
+        <mat-form-field class="full-width">
+          <mat-label>Id</mat-label>
+          <input formControlName="id" matInput />
+        </mat-form-field>
+      </td>
+      <td class="full-width">
+        <mat-form-field class="full-width">
+          <mat-label>Type</mat-label>
+          <input formControlName="type" matInput />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Date</mat-label>
+          <input formControlName="date" matInput />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Time</mat-label>
+          <input formControlName="time" matInput />
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Source</mat-label>
+          <input formControlName="source" matInput />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Status</mat-label>
+          <input formControlName="status" matInput />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Latitude</mat-label>
+          <input formControlName="latitude" matInput />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Longitude</mat-label>
+          <input formControlName="longitude" matInput />
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Magnitude Type</mat-label>
+          <input formControlName="magnitudeType" matInput />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Magnitude</mat-label>
+          <input formControlName="magnitude" matInput />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Magnitude Error</mat-label>
+          <input formControlName="magnitudeError" matInput />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Magnitude Source</mat-label>
+          <input formControlName="magnitudeSource" matInput />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Magnitude Seismic Stations</mat-label>
+          <input formControlName="magnitudeSeismicStations" matInput />
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Depth</mat-label>
+          <input formControlName="depth" matInput />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Depth Error</mat-label>
+          <input formControlName="depthError" matInput />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Depth Seismic Stations</mat-label>
+          <input formControlName="depthSeismicStations" matInput />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Azimuthal Gap</mat-label>
+          <input formControlName="azimuthalGap" matInput />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Root Mean Square</mat-label>
+          <input formControlName="rootMeanSquare" matInput />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Location Source</mat-label>
+          <input formControlName="locationSource" matInput />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Horizontal Distance</mat-label>
+          <input formControlName="horizontalDistance" matInput />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <mat-label>Horizontal Error</mat-label>
+          <input formControlName="horizontalError" matInput />
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <table class="full-width" cellspacing="0">
+    <tr>
+      <td class="full-width">
+        <button
+          (click)="saveEarthquake()"
+          *ngIf="mode === 'create'"
+          class="full-width"
+          mat-stroked-button
+          color="primary"
+        >
+          Save
+        </button>
+        <button
+          (click)="deleteEarthquake()"
+          *ngIf="mode === 'view'"
+          class="full-width"
+          mat-stroked-button
+          color="warn"
+        >
+          Delete
+        </button>
+        <button
+          (click)="updateEarthquake()"
+          *ngIf="mode === 'edit'"
+          class="full-width"
+          mat-stroked-button
+          color="primary"
+          type="submit"
+        >
+          Update
+        </button>
+        <button
+          (click)="userInteractions.hideEarthquakeDetail()"
+          *ngIf="mode === 'edit' || mode === 'create'"
+          class="full-width"
+          mat-stroked-button
+          color="primary"
+        >
+          Cancel
+        </button>
+      </td>
+    </tr>
+  </table>
+</form>
