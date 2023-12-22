@@ -193,7 +193,7 @@ export class EarthViewComponent implements AfterViewInit {
       })
       .on('click', (event: any, e: Earthquake) => {
         // Trigger your service to focus on the clicked earthquake
-        this.userInteractions.showEarthQuakeDetails(e);
+        this.userInteractions.showEarthquakeDetails(e.id);
       });
 
     if (renderEvent.removeAfterTimeout || this.userInteractions.isInPlayback) {

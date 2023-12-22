@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, first } from 'rxjs';
 import { Earthquake, newBlankEarthquake } from '../shared/types';
 import { RenderEarthQuakeDetail } from '../earthquake-detail/earthquake-detail.component';
+import { DataService } from './data.service';
 
 /**
  * Service responsible for handling user interactions related to earthquake events.
@@ -41,13 +42,13 @@ export class UserInteractionsService {
    */
   public playbackEvents$: Subject<'Play' | 'Stop'> = new Subject();
 
-  constructor() {}
+  constructor(private readonly dataService: DataService) {}
 
   /**
    * Creates a new earthquake event for rendering in the application.
    * This method sets the selectedEarthQuake$ subject to emit information about the new earthquake.
    */
-  public createNewEarthQuake(): void {
+  public createNewEarthquake(): void {
     this.selectedEarthQuake$.next({
       isNew: true,
       earthQuake: newBlankEarthquake(),
@@ -58,11 +59,16 @@ export class UserInteractionsService {
    * Displays details for a specific earthquake event.
    * @param earthQuake - The earthquake event to display details for.
    */
-  public showEarthQuakeDetails(earthQuake: Earthquake): void {
-    this.selectedEarthQuake$.next({
-      isNew: false,
-      earthQuake,
-    });
+  public showEarthquakeDetails(earthQuakId: string): void {
+    this.dataService
+      .getEarthquakeDetails(earthQuakId)
+      .pipe(first())
+      .subscribe((earthquake) => {
+        this.selectedEarthQuake$.next({
+          isNew: false,
+          earthQuake: earthquake,
+        });
+      });
   }
 
   /**

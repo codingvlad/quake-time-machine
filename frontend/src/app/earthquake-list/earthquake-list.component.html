@@ -3,7 +3,7 @@
   <span class="toolbar-spacer"></span>
   <button
     mat-icon-button
-    (click)="userInteractions.createNewEarthQuake()"
+    (click)="userInteractions.createNewEarthquake()"
     aria-label="Create new earthquake"
   >
     <mat-icon>add</mat-icon>
@@ -17,30 +17,30 @@
     <!-- ID Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>Id</th>
-      <td mat-cell *matCellDef="let earthQuake">{{ earthQuake.id }}</td>
+      <td mat-cell *matCellDef="let earthquake">{{ earthquake.id }}</td>
     </ng-container>
 
     <!-- Instant Column -->
     <ng-container matColumnDef="instant">
       <th mat-header-cell *matHeaderCellDef>Instant</th>
-      <td mat-cell *matCellDef="let earthQuake">{{ earthQuake.instant }}</td>
+      <td mat-cell *matCellDef="let earthquake">{{ earthquake.instant }}</td>
     </ng-container>
 
     <!-- Type Column -->
     <ng-container matColumnDef="type">
       <th mat-header-cell *matHeaderCellDef>Type</th>
-      <td mat-cell *matCellDef="let earthQuake">
-        {{ earthQuake.geojson.properties.Type }}
+      <td mat-cell *matCellDef="let earthquake">
+        {{ earthquake.geojson.properties.Type }}
       </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr
       mat-row
-      *matRowDef="let earthQuake; columns: displayedColumns"
-      (mouseenter)="focusOnEarthquake(earthQuake)"
+      *matRowDef="let earthquake; columns: displayedColumns"
+      (mouseenter)="focusOnEarthquake(earthquake)"
       (mouseleave)="focusOnEarthquake(null)"
-      (click)="userInteractions.showEarthQuakeDetails(earthQuake)"
+      (click)="userInteractions.showEarthquakeDetails(earthquake.id)"
     ></tr>
   </table>
 </div>

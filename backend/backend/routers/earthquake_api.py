@@ -55,7 +55,7 @@ def create_earthquake(
 
 
 @apiRouter.get("/earthquakes/{earthquake_id}")
-def read_earthquake(earthquake_id: int, db: Session = Depends(get_db)):
+def read_earthquake(earthquake_id: str, db: Session = Depends(get_db)):
     db_earthquake = (
         db.query(EarthquakeGeodataTable)
         .filter(EarthquakeGeodataTable.id == earthquake_id)
